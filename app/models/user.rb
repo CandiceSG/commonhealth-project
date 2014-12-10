@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   has_many :user_interests
   has_many :interests, through: :user_interests
   has_many :events
+  has_many :experiences
 
 end
