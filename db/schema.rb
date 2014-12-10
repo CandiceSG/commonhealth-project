@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210155811) do
+ActiveRecord::Schema.define(version: 20141210161056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 20141210155811) do
     t.datetime "updated_at"
   end
 
+  create_table "medications", force: true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "messages", force: true do |t|
     t.string   "visibility"
     t.string   "content"
@@ -102,6 +108,16 @@ ActiveRecord::Schema.define(version: 20141210155811) do
 
   add_index "user_interests", ["interest_id"], name: "index_user_interests_on_interest_id", using: :btree
   add_index "user_interests", ["user_id"], name: "index_user_interests_on_user_id", using: :btree
+
+  create_table "user_medications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "medication_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_medications", ["medication_id"], name: "index_user_medications_on_medication_id", using: :btree
+  add_index "user_medications", ["user_id"], name: "index_user_medications_on_user_id", using: :btree
 
   create_table "user_symptoms", force: true do |t|
     t.integer  "user_id"
