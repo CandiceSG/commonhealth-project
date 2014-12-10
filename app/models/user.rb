@@ -14,4 +14,6 @@ class User < ActiveRecord::Base
   has_many :symptoms, through: :user_symptoms
   has_many :user_medications
   has_many :medications, through: :user_medications
+  has_many :user_supplements
+  has_many :supplements, through: :user_supplements
 end
