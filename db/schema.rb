@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210144359) do
+ActiveRecord::Schema.define(version: 20141210140344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,14 +55,6 @@ ActiveRecord::Schema.define(version: 20141210144359) do
 
   add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
 
-  create_table "interests", force: true do |t|
-    t.integer  "user_interest_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "interests", ["user_interest_id"], name: "index_interests_on_user_interest_id", using: :btree
-
   create_table "messages", force: true do |t|
     t.string   "visibility"
     t.string   "content"
@@ -72,31 +64,6 @@ ActiveRecord::Schema.define(version: 20141210144359) do
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
-  create_table "symptoms", force: true do |t|
-    t.string   "description"
-    t.integer  "user_symptom_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "symptoms", ["user_symptom_id"], name: "index_symptoms_on_user_symptom_id", using: :btree
-
-  create_table "user_interests", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_interests", ["user_id"], name: "index_user_interests_on_user_id", using: :btree
-
-  create_table "user_symptoms", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_symptoms", ["user_id"], name: "index_user_symptoms_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
