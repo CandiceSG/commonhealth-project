@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210162034) do
+ActiveRecord::Schema.define(version: 20141210162712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,16 @@ ActiveRecord::Schema.define(version: 20141210162034) do
   add_index "user_symptoms", ["symptom_id"], name: "index_user_symptoms_on_symptom_id", using: :btree
   add_index "user_symptoms", ["user_id"], name: "index_user_symptoms_on_user_id", using: :btree
 
+  create_table "user_wellbeings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "wellbeing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_wellbeings", ["user_id"], name: "index_user_wellbeings_on_user_id", using: :btree
+  add_index "user_wellbeings", ["wellbeing_id"], name: "index_user_wellbeings_on_wellbeing_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -170,5 +180,11 @@ ActiveRecord::Schema.define(version: 20141210162034) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "wellbeings", force: true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

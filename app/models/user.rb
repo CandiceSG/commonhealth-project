@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
   has_many :medications, through: :user_medications
   has_many :user_supplements
   has_many :supplements, through: :user_supplements
+  has_many :user_wellbeings
+  has_many :wellbeings, through: :user_wellbeings
 end
