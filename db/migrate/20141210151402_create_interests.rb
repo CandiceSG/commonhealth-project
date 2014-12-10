@@ -1,7 +1,7 @@
 class CreateInterests < ActiveRecord::Migration
   def change
     create_table :interests do |t|
-      t.references :user_interest, index: true
+      t.string :description
 
       t.timestamps
     end

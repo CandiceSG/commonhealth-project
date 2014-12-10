@@ -1,3 +1,4 @@
 class Interest < ActiveRecord::Base
-  belongs_to :userinterest
+  has_many :user_interests
+  has_many :users, through: :user_interests
 end
