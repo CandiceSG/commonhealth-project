@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210123850) do
+ActiveRecord::Schema.define(version: 20141210130348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["message_id"], name: "index_comments_on_message_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "interests", force: true do |t|
     t.integer  "user_interest_id"
@@ -23,6 +34,16 @@ ActiveRecord::Schema.define(version: 20141210123850) do
   end
 
   add_index "interests", ["user_interest_id"], name: "index_interests_on_user_interest_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.string   "visibility"
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "user_interests", force: true do |t|
     t.integer  "user_id"
