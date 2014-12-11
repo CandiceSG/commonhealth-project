@@ -35,6 +35,9 @@ gem 'bootstrap_form'
 
 gem 'font-awesome-sass', '~> 4.2.0'
 
+gem 'activeadmin', github: 'activeadmin'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
