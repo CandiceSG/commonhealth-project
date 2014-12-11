@@ -1,6 +1,12 @@
 ActiveAdmin.register Interest do
    permit_params :description
 
+      index do
+        selectable_column
+        column :id
+        column :description
+        actions
+      end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
