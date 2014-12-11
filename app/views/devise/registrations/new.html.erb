@@ -1,35 +1,21 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h1>Mon profil</h1>
 
-<%= bootsrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-
-  <div class="field">
-    <%= f.label :first_name %><br />
     <%= f.text_field :first_name, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <%= f.password_field :current_password, autocomplete: "off", label: "Current Password", help:"(we need your current password to confirm your changes)" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <%= f.password_field :password, autocomplete: "off", label: "New Password", help: "(leave blank if you don't want to change it)" %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.password_field :password_confirmation, autocomplete: "off", label: "New Password confirmation" %>
+
+    <%= f.submit "Save your profile" %>
+
 <% end %>
-
-<%= render "devise/shared/links" %>
