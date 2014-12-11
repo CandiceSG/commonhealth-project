@@ -1,4 +1,5 @@
 ActiveAdmin.register Interest do
+   permit_params :description
 
 
   # See permitted parameters documentation:
