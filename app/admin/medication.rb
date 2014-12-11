@@ -1,5 +1,5 @@
-ActiveAdmin.register Symptom do
-   permit_params :description
+ActiveAdmin.register Medication do
+
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
