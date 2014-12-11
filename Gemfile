@@ -28,6 +28,14 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+gem 'better_errors',        group: :development
+
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'bootstrap_form'
+
+gem 'font-awesome-sass', '~> 4.2.0'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
