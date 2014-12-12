@@ -1,10 +1,13 @@
 class ProfilesController < ApplicationController
+  before_action :set_user
 
 
   def new
+    @user = current_user
   end
 
   def create
+    @user = current_user(user_params)
   end
 
   def index
