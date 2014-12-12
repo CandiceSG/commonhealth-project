@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :profiles
 
   ActiveAdmin.routes(self)
-  devise_for :users
+
+  devise_for :users do
+    get 'user', :to => 'profiles#new', :as => :user_root
+  end
+
   root to: "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
