@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :set_user
-  before_action :authenticate_user
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def new
     @user = current_user
@@ -8,6 +8,8 @@ class ProfilesController < ApplicationController
 
   def create
     @user = current_user(user_params)
+    @user.save
+    respond_with(@user)
   end
 
   def index

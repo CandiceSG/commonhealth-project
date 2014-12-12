@@ -12,11 +12,15 @@
 
             <%= f.email_field :email, autofocus: true, label: "Votre email" %>
 
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
             <%= f.password_field :password, autocomplete: "off", label: "Mot de passe" %>
 
             <%= f.password_field :password_confirmation, autocomplete: "off",  label: "Confirmation de mot de passe" %>
 
-            <%= f.submit "Sign up" %>
+            <%= f.submit "Save your profile" %>
           <br>
           <br>
           <br>
