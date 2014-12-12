@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210162712) do
+ActiveRecord::Schema.define(version: 20141211204628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -82,6 +97,11 @@ ActiveRecord::Schema.define(version: 20141210162712) do
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "relationships", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "supplements", force: true do |t|
     t.string   "description"
@@ -176,6 +196,7 @@ ActiveRecord::Schema.define(version: 20141210162712) do
     t.string   "zipcode"
     t.string   "mood"
     t.string   "picture"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

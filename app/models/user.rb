@@ -18,4 +18,7 @@ class User < ActiveRecord::Base
   has_many :supplements, through: :user_supplements
   has_many :user_wellbeings
   has_many :wellbeings, through: :user_wellbeings
+
+  validates_presence_of :first_name, :birth_date, :email, :picture
+
 end
