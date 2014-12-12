@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+
+
   def new
   end
 
@@ -18,5 +20,14 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
+  end
+
+private
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :birth_date, :picture, :address, :city, :country, :zipcode, :mood)
   end
 end

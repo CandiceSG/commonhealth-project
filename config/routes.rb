@@ -1,19 +1,7 @@
 Rails.application.routes.draw do
 
 
-  get 'profiles/new'
-
-  get 'profiles/create'
-
-  get 'profiles/index'
-
-  get 'profiles/show'
-
-  get 'profiles/edit'
-
-  get 'profiles/update'
-
-  get 'profiles/destroy'
+  resources :profiles
 
   ActiveAdmin.routes(self)
   devise_for :users
