@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
 
-  resources :profiles
+  get 'profiles/show'
 
   ActiveAdmin.routes(self)
 
-  devise_for :users do
-    get 'user', :to => 'profiles#new', :as => :user_root
+  devise_for :users, :path => "accounts"
+
+  resources :users , :path => "accounts", :only => :none do
+    resource :profile
   end
+    #get 'user', :to => 'profiles#new', :as => :user_root
+
 
   root to: "home#index"
 

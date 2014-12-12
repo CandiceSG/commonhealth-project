@@ -8,8 +8,11 @@ class ProfilesController < ApplicationController
 
   def create
     @user = current_user(user_params)
-    @user.save
-    respond_with(@user)
+    if @user.save
+      redirect_to root_path, notice: 'Merci, votre message a été correctement créé.'
+    else
+      render :new, notice: 'Mince, réessayer svp.'
+    end
   end
 
   def index
@@ -29,7 +32,7 @@ class ProfilesController < ApplicationController
 
 private
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def user_params
