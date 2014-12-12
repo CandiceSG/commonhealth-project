@@ -1,0 +1,39 @@
+ <nav class="navbar navbar-default navbar-fixed-top navbar-wagon" role="navigation">
+  <div class="container-fluid">
+<!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li><%= link_to 'Mon profil', @profiles_show_path%></li>
+            <li class="sign-out"><%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %></li>
+        <% else %>
+            <li class="sign-in"><%= link_to 'Sign in', new_user_session_path %></li>
+            <li class="sign-up"><%= link_to 'Sign up', new_user_registration_path %></li>
+        <% end %>
+
+        <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  Rejoignez-nous<span class="caret"></span>
+                </a>
+          <ul class="dropdown-menu" role="menu">
+             <li>
+                <a href="https://www.facebook.com/lewagonformation"><i class="fa fa-facebook-square"></i> Facebook</a>
+             </li>
+            <li>
+                <a href="https://twitter.com/lewagonparis"><i class="fa fa-twitter-square"></i> Twitter</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
