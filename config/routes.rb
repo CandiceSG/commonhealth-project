@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
 
 
+  get 'profiles/new'
+
+  get 'profiles/create'
+
+  get 'profiles/index'
+
+  get 'profiles/show'
+
+  get 'profiles/edit'
+
+  get 'profiles/update'
+
+  get 'profiles/destroy'
+
   ActiveAdmin.routes(self)
   devise_for :users
   root to: "home#index"
