@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
 
-  get 'profiles/show'
+  get 'profiles/show',
 
   ActiveAdmin.routes(self)
 
-  devise_for :users, :path => "accounts"
+  devise_for :users
 
   resources :users , :path => "accounts", :only => :none do
     resource :profile

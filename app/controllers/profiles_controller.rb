@@ -3,19 +3,13 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @user = current_user
   end
 
   def create
-    @user = current_user(user_params)
-    if @user.save
-      redirect_to root_path, notice: 'Merci, votre message a été correctement créé.'
-    else
-      render :new, notice: 'Mince, réessayer svp.'
-    end
   end
 
   def index
+
   end
 
   def show
@@ -25,6 +19,13 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @user = current_user(user_params)
+    @user.update(user_params)
+    if @user.save
+      redirect_to root_path, notice: 'Merci, votre profil a bien été créé.'
+    else
+      render :edit, notice: 'Mince, réessayer svp.'
+    end
   end
 
   def destroy
