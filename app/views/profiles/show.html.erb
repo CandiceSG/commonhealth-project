@@ -1,2 +1,23 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<h1 class="text-center">Mon profil</h1>
+<br>
+<br>
+<br>
+<div class="container text-align">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+       <p><strong>Prénom:</strong> <%= @user.first_name %></p>
+      <br>
+      <p><strong>Date de naissance:</strong> <%= @user.birth_date %></p>
+      <br>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <br>
+       <br>
+      <%= link_to(edit_user_profile_path, class: "btn btn-primary") do %>
+        <i class="fa fa-pencil">   Ajouter ou mettre à jour mon profil</i>
+      <% end %>
+      <div class="horizontal_spacer"></div>
+      <div class="horizontal_spacer"></div>
+      <div class="horizontal_spacer"></div>
+    </div>
+  </div>
+</div>
