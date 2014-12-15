@@ -5,15 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users do
-    resource :profile, only: [:edit, :update, :show, :destroy]
-    resources :user_medications
-    resources :user_symptoms
-    resources :user_wellbeings
-    resources :user_interests
-    resources :user_supplements
-    resources :user_diets
-  end
+  resources :profiles, only: [:edit, :update, :show, :destroy]
 
     #get 'user', :to => 'profiles#new', :as => :user_root
 

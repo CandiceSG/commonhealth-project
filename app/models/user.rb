@@ -21,4 +21,6 @@ class User < ActiveRecord::Base
 
   #validates_presence_of :first_name, :email, :password
 
+  accepts_nested_attributes_for :user_medications
+
 end

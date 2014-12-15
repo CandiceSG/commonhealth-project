@@ -1,29 +1,45 @@
-<h1 class="text-center">Complétez votre profil</h1>
+<h1 class="container text-center">Complétez votre profil</h1>
+  <br>
+  <br>
   <br>
   <div class= "title text-center"><strong>VOS COORDONNEES</strong>
-  <br>
-  <br>
-    <div class="container text-align">
-      <div class="row">
-        <div class="col-xs-4 col-xs-offset-4">
-          <%= bootstrap_form_for(@user) do |f| %>
+    <br>
+    <br>
+      <div class="container text-align">
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+          <%= bootstrap_form_for(current_user, url: profile_path(current_user)) do |f| %>
               <%= f.text_field :address, label: "Adresse", placeholder: "Adresse" %>
               <%= f.text_field :zipcode, label: "Code postal", placeholder: "Code Postal" %>
               <%= f.text_field :city, label: "Ville", placeholder: "Ville" %>
               <%= f.text_field :country, label: "Pays", placeholder: "Pays" %>
-
-
-            <%= f.submit "Créer votre profile", class: "btn btn-primary" %>
-          <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+  <br>
+  <br>
+        <div class="medications"><strong>VOTRE TRAITEMENT</strong></div>
 
-  <div class="container text-center">
-      <div class= "row">
-        <div class="col-xs-8 col-xs-offset-2">
-          <h3 class="medications"></h3>
-        </div>
-      </div>
+              <div class="container">
+                  <div class= "row">
+                    <br>
+                     <br>
+                      <% @medications.each do |medication| %>
+                        <div class="col-xs-12 col-sm-4">
+                          <div class="checkbox-inline">
+                            <label>
+                              <%= check_box_tag "user[user_medications_attributes][medication_id]", medication.id, f.object.user_medications.map(&:medication_id).include?(medication.id) %>
+                              <%= medication.description %>
+                            </label>
+                          </div>
+                        </div>
+                    <% end %>
+                  </div>
+              </div>
+              <br>
+            <br>
+        <%= f.submit "Créer votre profile", class: "btn btn-primary" %>
+      <% end %>
   </div>
+<br>
+<br>
