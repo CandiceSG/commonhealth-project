@@ -1,18 +1,23 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :set_medication
+  #before_action :set_user_medication
 
   def new
-    @medication = Medication.new
+    #@user_medication = current_user.user_medications.new
   end
 
   def create
-    @medication = Medication.new(medication_params)
+    #@user_medication = current_user.user_medication.new(medication_params)
+    #if @user_medication.save
+      #redirect_to to @user
+    #else
+      #render 'new'
+    #end
   end
 
   def index
-    @medications = Medication.all
+    #@medications = @user.medications.all
   end
 
   def show
@@ -40,12 +45,11 @@ private
     @user = current_user
   end
 
+  def set_user_medication
+    #@user_medication = User_medication.find(params[:user_medication_id])
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :birth_date, :picture, :address, :city, :country, :zipcode, :mood)
-  end
-
-  def set_medication
-    @medication = Medication.find(params[:medication_id])
   end
 end
