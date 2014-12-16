@@ -19,6 +19,22 @@ class User < ActiveRecord::Base
   has_many :user_wellbeings
   has_many :wellbeings, through: :user_wellbeings
 
-  #validates_presence_of :first_name, :email, :password
+  validates :first_name, :email, :password, presence: true
+
+
+def friends(only_pending = false)
+    user_friends = []
+    my_friends = Friendship.includes([:sender, :receiver]).where("sender_id = ? or receiver_id = ?",  self.id, self.id)
+    my_friends.each do |friend|
+      if (only_pending && !friend.status) || (!only_pending && friend.status)
+        if friendship.receiver_id == self.id
+          user_friends << friendship.sender
+        else
+          user_friends << friendship.receiver
+        end
+      end
+    end
+    user_friends
+  end
 
 end
