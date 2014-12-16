@@ -2,7 +2,14 @@ Rails.application.routes.draw do
 
 
   ActiveAdmin.routes(self)
+
   devise_for :users
+
+  resources :profiles, only: [:edit, :update, :show, :destroy]
+
+    #get 'user', :to => 'profiles#new', :as => :user_root
+
+
   root to: "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

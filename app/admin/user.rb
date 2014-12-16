@@ -9,7 +9,7 @@ ActiveAdmin.register User do
         f.input :address
         f.input :city
         f.input :country
-        f.input :zipcoded
+        f.input :zipcode
         f.input :mood
         f.input :picture
       end
