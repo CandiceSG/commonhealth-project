@@ -5,13 +5,22 @@
 <div class="container text-align">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-       <p><strong>Prénom:</strong> <%= @user.first_name %></p>
-      <br>
-      <p><strong>Date de naissance:</strong> <%= @user.birth_date %></p>
-      <br>
+       <p><strong>First name:</strong> <%= @user.first_name.capitalize %></p>
+      <div class="spacer"></div>
+      <p><strong>Last name:</strong> <%= @user.birth_date %></p>
+      <div class="spacer"></div>
       <p><strong>Email:</strong> <%= @user.email %></p>
       <br>
-       <br>
+      <br>
+      <strong>MES TRAITEMENTS</strong>
+      <% @user.medications.each do |medications| %>
+      <br>
+      <br>
+      <%= medications.description %>
+      <% end %>
+      <br>
+      <br>
+      <br>
       <%= link_to(edit_profile_path, class: "btn btn-primary") do %>
         <i class="fa fa-pencil">   Ajouter ou mettre à jour mon profil</i>
       <% end %>
