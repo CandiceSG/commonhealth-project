@@ -24,11 +24,11 @@
                   <div class= "row">
                     <br>
                      <br>
-                      <% @medications.each do |medication| %>
+                      <% Medication.all.each do |medication| %>
                         <div class="col-xs-12 col-sm-4">
                           <div class="checkbox-inline">
                             <label>
-                              <%= check_box_tag "user[user_medications_attributes][medication_id]", medication.id, f.object.user_medications.map(&:medication_id).include?(medication.id) %>
+                              <%= check_box_tag "user[medication_ids][]", medication.id, current_user.medication_ids.include?(medication.id) %>
                               <%= medication.description %>
                             </label>
                           </div>
