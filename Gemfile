@@ -30,6 +30,8 @@ gem 'spring',        group: :development
 
 gem 'better_errors',        group: :development
 gem 'binding_of_caller',     group: :development
+gem 'pry-byebug', group: :development
+gem 'quiet_assets', group: :development
 
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'bootstrap_form'
@@ -56,4 +58,3 @@ gem 'devise'
 gem 'rails_admin'
 gem 'activeadmin', github: 'activeadmin'
 gem 'country_select', github: 'stefanpenner/country_select'
-
