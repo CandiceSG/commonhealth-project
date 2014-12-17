@@ -30,3 +30,10 @@
     </div>
   </div>
 </div>
+
+<h2>Friends</h2>
+<ul>
+  <% for user in @user.friends %>
+    <li><%= user.first_name %></li>
+  <% end %>
+</ul>
