@@ -1,4 +1,13 @@
 class FriendshipsController < InheritedResources::Base
+  before_action :set_friend, only: [:index, :destroy]
+
+  def index
+    @user = User.where(id: params[:profile_id]).first || current_user
+    @friends = @user.friendships
+  end
+
+  def new
+  end
 
   def create
     @friendship = current_user.friendship.build(:friend_id => params[:friend_id])
@@ -12,13 +21,17 @@ class FriendshipsController < InheritedResources::Base
   end
 
     def destroy
-      @friendship = Frienship.find(params[:id])
+      @friendship = current_user.frienships.find(params[:id])
       @friendship.destroy
-      flash[:notice] = "Successfully destroyed frienship."
-      redirect_to root_url
+      flash[:notice] = "Removed frienship."
+      redirect_to profile_path
     end
 
   private
+
+    def set_friend
+    @friend = Friend.find(params[:friend_id])
+    end
 
     def friendship_params
       params.require(:friendship).permit(:user_id, :friend_id, :create, :destroy)
