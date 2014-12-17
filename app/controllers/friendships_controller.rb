@@ -21,7 +21,7 @@ class FriendshipsController < InheritedResources::Base
       @friendship = current_user.friendships.find(params[:id])
       @friendship.destroy
       flash[:notice] = "Removed frienship."
-      redirect_to profile_path
+      redirect_to profile_path(current_user)
     end
 
   private

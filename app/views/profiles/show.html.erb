@@ -39,7 +39,6 @@
       <ul>
         <% for friendship in @user.friendships %>
           <li><%= friendship.friend.first_name %>
-            <br>
             <%= link_to 'remove', friendship, :method => :delete %>
           </li>
         <% end %>
@@ -47,3 +46,5 @@
     </div>
   </div>
 </div>
+<br>
+<br>
