@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :friendships
+
   ActiveAdmin.routes(self)
 
   devise_for :users
