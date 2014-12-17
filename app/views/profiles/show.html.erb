@@ -30,10 +30,17 @@
     </div>
   </div>
 </div>
-
-<h2>Friends</h2>
-<ul>
-  <% for user in @user.friends %>
-    <li><%= user.first_name %></li>
-  <% end %>
-</ul>
+<br>
+<br>
+<div class="container text-align">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h2>Friends</h2>
+      <ul>
+        <% for user in @user.friends %>
+          <li><%= user.first_name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
