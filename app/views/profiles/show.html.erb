@@ -39,21 +39,8 @@
       <ul>
         <% for friendship in @user.friendships %>
           <li><%= friendship.friend.first_name %>
-            <% link_to 'remove', friendship, :method => :delete %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="container text-align">
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <h2>Friended by Users</h2>
-      <ul>
-        <% for user in @user.friends %>
-          <li><%= user.first_name %>
-            <% link_to 'remove', friendship, :method => :delete %>
+            <br>
+            <%= link_to 'remove', friendship, :method => :delete %>
           </li>
         <% end %>
       </ul>
