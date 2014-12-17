@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :profiles, only: [:edit, :update, :show, :destroy]
+  resources :profiles, only: [:index, :edit, :update, :show, :destroy]
 
     #get 'user', :to => 'profiles#new', :as => :user_root
 

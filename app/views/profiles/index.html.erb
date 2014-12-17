@@ -1,2 +1,13 @@
-<h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+<h1>Vos amis</h1>
+<div id="@users">
+<% for user in @users %>
+  <div class="user">
+    <p>
+      <strong><%= user.firstname%></strong>
+      <%= link_to "Add Friend", ... %>
+      <div class="clear">
+      </div>
+    </p>
+  </div>
+<% end %>
+</div>
