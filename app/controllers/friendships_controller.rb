@@ -2,8 +2,6 @@ class FriendshipsController < InheritedResources::Base
   before_action :set_friend, only: [:index, :destroy]
 
   def index
-    @user = User.where(id: params[:profile_id]).first || current_user
-    @friends = @user.friendships
   end
 
   def new
