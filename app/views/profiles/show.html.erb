@@ -5,7 +5,7 @@
 <div class="container text-align">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-       <p><strong>First name:</strong> <%= @user.first_name.capitalize %></p>
+       <p><strong>First name:</strong> <%= @user.first_name.capitalize%></p>
       <div class="spacer"></div>
       <p><strong>Last name:</strong> <%= @user.birth_date %></p>
       <div class="spacer"></div>
@@ -30,3 +30,21 @@
     </div>
   </div>
 </div>
+<br>
+<br>
+<div class="container text-align">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h2>Friends</h2>
+      <ul>
+        <% for friendship in @user.friendships %>
+          <li><%= friendship.friend.first_name %>
+            <%= link_to 'remove', friendship, :method => :delete %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
+<br>
