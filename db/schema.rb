@@ -31,17 +31,6 @@ ActiveRecord::Schema.define(version: 20141218144934) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "comments", force: true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.integer  "message_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["message_id"], name: "index_comments_on_message_id", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
   create_table "diets", force: true do |t|
     t.string   "description"
     t.datetime "created_at"
@@ -94,16 +83,6 @@ ActiveRecord::Schema.define(version: 20141218144934) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "messages", force: true do |t|
-    t.string   "visibility"
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.text     "content"
