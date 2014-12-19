@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :messages
-  has_many :comments
+  has_many :posts
+  has_many :comments, through: :posts
+
   has_many :user_interests
   has_many :interests, through: :user_interests
   has_many :events

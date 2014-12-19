@@ -43,8 +43,23 @@
           </li>
         <% end %>
       </ul>
-    </div>
+  <br>
+<br>
+<div class="container text-align">
+  <div class="row">
+    <%= link_to "Voir mon fil d'actualité", posts_path %>
+      <br>
+      <br>
+    <%= link_to "Poster un statu", new_post_path %>
   </div>
 </div>
 <br>
 <br>
+<div class="container text-align">
+  <div class="row">
+    <strong>MES POSTS</strong>
+    <% @user.posts.each do |post| %>
+      <%= post.content %>
+    <% end %>
+  </div>
+</div>

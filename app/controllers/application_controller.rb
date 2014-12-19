@@ -12,6 +12,6 @@ private
  end
 
  def after_sign_in_path_for(resource)
-    profile_path(current_user)
+    posts_path(resource)
  end
 end
