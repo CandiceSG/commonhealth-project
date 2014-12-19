@@ -1,23 +1,29 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :reply, :reply_server]
+  before_filter :authenticate_user!
   before_action :set_user, only: [:new, :create]
+  before_action :set_post, only: [:show, :reply, :reply_server]
 
   def new
-    @post = @user.posts.new
+    @post = Post.new
     @post.user = current_user
-    @comment = Comment.new
+    #@comment = @post.comments.build(params[:comment])
   end
 
   def create
-    @post =  @user.posts.new(post_params)
-    @post.user_id = current_user.id
-    if params[:public] == "true"
-      @post.user.build(content: params[:content], privacy: params[:privacy], user: current_user)
-    end
-    if params[:friends_id].present?
-      params[:friends_id].each do |user_id|
-        @post.user.build(content: params[:content], privacy: params[:privacy], user_id: user_id.to_i)
-      end
+    @post =  Post.new
+    @post.user = current_user
+    # if params[:public] == "true"
+    #   @post.user.build(content: params[:content], privacy: params[:privacy], user: current_user)
+    # end
+    # if params[:friends_id].present?
+    #   params[:friends_id].each do |user_id|
+    #     @post.user.build(content: params[:content], privacy: params[:privacy], user_id: user_id.to_i)
+    #   end
+    # end
+    if @post.save
+      redirect_to profile_path(profile), notice: 'Bravo, votre post a bien été publié.'
+    else
+      render :new, notice: 'Petit problème... réessayer svp.'
     end
     # @comment = Comment.new(comment_params)
     # @comment.user = current_user
@@ -31,7 +37,6 @@ class PostsController < ApplicationController
   end
 
   def index
-
   end
 
   def show
@@ -53,7 +58,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-     @post = @user.posts.find(params[:id])
+     @post = Post.find(params[:id])
   end
 
   def comment_params
@@ -61,6 +66,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :privacy, comments_attributes: [:content])
+    params.require(:post).permit(:content, :privacy, :user_id) #, comments_attributes: [:content])
   end
 end
