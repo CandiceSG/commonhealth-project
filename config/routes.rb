@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
 
 
+  get 'posts/new'
+
+  get 'posts/create'
+
+  get 'posts/index'
+
+  get 'posts/show'
+
+  get 'posts/edit'
+
+  get 'posts/update'
+
+  get 'posts/destroy'
+
   resources :friendships
 
   ActiveAdmin.routes(self)
