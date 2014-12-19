@@ -5,8 +5,13 @@
 
         <%= bootstrap_form_for(@post) do |f| %>
           <div class="form-group">
-            <%= label_tag(:content) %>
+
+            <%= f.label :content, "Message" %>
+            <%= f.text_area :content, class: "form-control" %>
+            <% f.fields_for :posts do |builder| %>
+            <%= builder.label :content, "Votre post" %>
             <%= text_area_tag(:content, nil, class: "form-control") %>
+            <% end %>
           </div>
 
           <div class='form-group'>

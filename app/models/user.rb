@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :posts
+  has_many :posts, :dependent => :destroy
+  accepts_nested_attributes_for :posts,:reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+
   has_many :comments, through: :posts
 
   has_many :user_interests

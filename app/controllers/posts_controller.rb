@@ -1,27 +1,26 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user, only: [:new, :create, :index]
   before_action :set_post, only: [:show, :reply, :reply_server]
 
   def new
-    @post = Post.new
-    @post.user = current_user
+    @user = current_user
+    @post = current_user.posts.build
     #@comment = @post.comments.build(params[:comment])
   end
 
   def create
-    @post =  Post.new
-    @post.user = current_user
-    # if params[:public] == "true"
-    #   @post.user.build(content: params[:content], privacy: params[:privacy], user: current_user)
-    # end
-    # if params[:friends_id].present?
-    #   params[:friends_id].each do |user_id|
-    #     @post.user.build(content: params[:content], privacy: params[:privacy], user_id: user_id.to_i)
-    #   end
-    # end
+    @post= current_user.posts.build(post_params)
+     if params[:public] == "true"
+       @post.user.build(content: params[:content], privacy: params[:privacy], user: current_user)
+     end
+     if params[:friends_id].present?
+       params[:friends_id].each do |user_id|
+         @post.user.build(content: params[:content], privacy: params[:privacy], user_id: user_id.to_i)
+       end
+     end
     if @post.save
-      redirect_to profile_path(profile), notice: 'Bravo, votre post a bien été publié.'
+      redirect_to profile_path(current_user), notice: 'Bravo, votre post a bien été publié.'
     else
       render :new, notice: 'Petit problème... réessayer svp.'
     end
@@ -37,6 +36,15 @@ class PostsController < ApplicationController
   end
 
   def index
+    @user = User.where(id: params[:profile_id]).first || current_user
+    if params[:public] == "true"
+      @posts = @user.posts.joins(:post params[:content]: params[:privacy], user: current_user)
+    end
+    if params[:friends_id].present?
+      @posts = @post.user.friends
+    end
+  end
+
   end
 
   def show
@@ -66,6 +74,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :privacy, :user_id) #, comments_attributes: [:content])
+    params.require(:post).permit(:content, :privacy, :user_id, comments_attributes: [:content])
   end
-end
+
