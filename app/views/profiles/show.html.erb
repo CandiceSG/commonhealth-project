@@ -35,7 +35,7 @@
 <div class="container text-align">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <h2>Friends</h2>
+      <h2>Mes amis</h2>
       <ul>
         <% for friendship in @user.friendships %>
           <li><%= friendship.friend.first_name %>
@@ -56,13 +56,18 @@
 <br>
 <br>
 <div class="container text-align">
-  <div class="row">
-    <strong>MES POSTS</strong>
-    <% Post.all.each do |post| %>
-    <%= post.content %>
-    <% end %>
-    <% @user.posts.each do |post| %>
-    <%= post.content %>
-    <% end %>
+  <div class="col-xs-10">
+    <p><strong>MES POSTS</strong></p>
+      <% Post.all.each do |post| %>
+        <div class="row">
+          <div class="col-xs-8">
+            <%= post.content %>
+          </div>
+        </div>
+      <% end %>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>

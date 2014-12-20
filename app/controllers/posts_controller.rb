@@ -4,13 +4,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :reply, :reply_server]
 
   def new
-    @user = current_user
     @post = current_user.posts.build
     #@comment = @post.comments.build(params[:comment])
   end
 
   def create
     @post= current_user.posts.build(post_params)
+    @post.user_id = current_user.id
      if params[:public] == "true"
        @post.user.build(content: params[:content], privacy: params[:privacy], user: current_user)
      end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   def index
     @user = User.where(id: params[:profile_id]).first || current_user
     if params[:public] == "true"
-      @posts = @user.posts.joins(:post params[:content]: params[:privacy], user: current_user)
+      @posts = Post.all
     end
     if params[:friends_id].present?
       @posts = @post.user.friends
