@@ -45,10 +45,10 @@ class PostsController < ApplicationController
 
   def destroy
    if @post.destroy
-      redirect_to profile_path(current_user), notice: "Votre statu a bien été supprimé."
+      redirect_to profile_path(current_user), notice: "Votre status a bien été supprimé."
    else
      redirect_to posts_path
-     flash[:notice] = "Vous ne pouvez pas modifié ce message"
+     flash[:notice] = "Vous ne pouvez pas modifier ce message"
    end
   end
 
