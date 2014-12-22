@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_user, only: [:new, :create, :index]
-  before_action :set_post, only: [:show, :reply, :reply_server]
+  before_action :set_user, only: [:new, :create]
+  before_action :set_post, only: [:show]
 
   def new
     @post = current_user.posts.new
@@ -18,6 +18,8 @@ class PostsController < ApplicationController
   end
 
   def index
+    @user = User.where(id: params[:user_id]).first || current_user
+    @posts = Post.all
   end
 
   end
@@ -59,7 +61,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-     @post = current_user.posts.find(params[:id])
+     @post = current_user.posts.find(params[:post_id])
   end
 
   # def comment_params

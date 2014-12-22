@@ -9,12 +9,7 @@ Rails.application.routes.draw do
     resources :friendships
   end
 
-  resources :posts #do
-    #  member do
-    #   put :reply
-    #   put :reply_server
-    # end
-  #end
+  resources :posts
 
   root to: "home#index"
 

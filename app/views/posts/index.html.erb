@@ -2,7 +2,15 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <p><strong>MON FIL D'ACTUALITE</p></strong>
-
+        <% @posts.each do |post| %>
+          <% if post.privacy == "0" %>
+            <%= post.content %>
+          <% end %>
+          <br>
+          <% if post.user_id == current_user.friend_ids %>
+            <%= post.content %>
+          <% end %>
+        <% end %>
     </div>
   </div>
 </div>
