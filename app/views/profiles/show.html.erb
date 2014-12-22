@@ -38,8 +38,10 @@
       <h2>Mes amis</h2>
       <ul>
         <% for friendship in @user.friendships %>
-          <li><%= friendship.friend.first_name %>
-            <%#= link_to 'remove', profile_friendship_path(@user, @profile, @frienship), :method => :delete %>
+          <li><%= friendship.friend.first_name.capitalize %>
+            <div class="spacer">
+            <%= link_to "Retirer de ma liste d'amis", profile_friendship_path(current_user.friendships, friendship), :method => :delete, data: { confirm: 'Etes-vous sûr ?' } %>
+            </div>
           </li>
         <% end %>
       </ul>
@@ -55,6 +57,7 @@
 </div>
 <br>
 <br>
+
 <div class="container text-align">
   <div class="col-xs-10">
     <p><strong>MES POSTS</strong></p>
