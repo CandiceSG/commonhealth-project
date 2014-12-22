@@ -1,0 +1,31 @@
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+      <div class="border">
+
+        <%= bootstrap_form_for(@post) do |f| %>
+          <div class="form-group">
+
+            <%= f.text_area :content, class: "form-control", label: "Postez votre message" %>
+            <% f.fields_for :posts do |f| %>
+            <%= f.label :content, "Message" %>
+            <%= text_area_tag(:content, nil, class: "form-control") %>
+            <% end %>
+          </div>
+
+          <div class='form-group'>
+            <div class="privacy">
+              <%#= select_tag :privacy, options_for_select(Post::PRIVACY), label: "Personnaliser" %>
+              <%= f.select :privacy, options_for_select([["Public", 0], ["Mes amis", 1]], :selected => f.object.privacy), label: "Confidentialité" %>
+            </div>
+          </div>
+          <div class="actions text-center" id="submit-button">
+              <%= f.submit "Publier", class: 'btn btn-danger' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

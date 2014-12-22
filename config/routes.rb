@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
 
 
-  resources :friendships
-
   ActiveAdmin.routes(self)
 
   devise_for :users
 
-  resources :profiles, only: [:index, :edit, :update, :show, :destroy]
+  resources :profiles, only: [:index, :edit, :update, :show, :destroy] do
+    resources :friendships
+  end
 
-    #get 'user', :to => 'profiles#new', :as => :user_root
-
+  resources :posts #do
+    #  member do
+    #   put :reply
+    #   put :reply_server
+    # end
+  #end
 
   root to: "home#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
