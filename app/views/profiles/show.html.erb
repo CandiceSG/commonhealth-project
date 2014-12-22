@@ -61,10 +61,12 @@
 <div class="container text-align">
   <div class="col-xs-10">
     <p><strong>MES POSTS</strong></p>
-      <% Post.all.each do |post| %>
+      <% @posts.each do |post| %>
         <div class="row">
           <div class="col-xs-8">
-            <%= post.content %>
+            <% if post.user_id == current_user.id %>
+              <%= post.content %>
+            <% end %>
           </div>
         </div>
       <% end %>

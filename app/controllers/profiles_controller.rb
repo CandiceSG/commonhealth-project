@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @user = User.where(id: params[:user_id]).first || current_user
+    @posts = Post.all
   end
 
   def edit
