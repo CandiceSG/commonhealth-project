@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.new
-    @comment = current_user.comments.new
   end
 
   def create
@@ -19,13 +18,6 @@ class PostsController < ApplicationController
   end
 
   def index
-    @user = User.where(id: params[:profile_id]).first || current_user
-    if params[:public] == "true"
-      @posts = Post.all
-    end
-    if params[:friends_id].present?
-      @posts = @post.user.friends
-    end
   end
 
   end
@@ -70,9 +62,9 @@ class PostsController < ApplicationController
      @post = current_user.posts.find(params[:id])
   end
 
-  def comment_params
-    params.require(:comment).permit(:content)
-  end
+  # def comment_params
+  #   params.require(:comment).permit(:content)
+  # end
 
   def post_params
     params.require(:post).permit(:content, :privacy, :user_id, comments_attributes: [:content])
