@@ -1,38 +1,21 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_user, only: [:new, :create, :index]
   before_action :set_post, only: [:show, :reply, :reply_server]
 
   def new
-    @post = current_user.posts.build
-    #@comment = @post.comments.build(params[:comment])
+    @post = current_user.posts.new
+    @comment = current_user.comments.new
   end
 
   def create
-    @post= current_user.posts.build(post_params)
+    @post= current_user.posts.new(post_params)
     @post.user_id = current_user.id
-     if params[:public] == "true"
-       @post.user.build(content: params[:content], privacy: params[:privacy], user: current_user)
-     end
-     if params[:friends_id].present?
-       params[:friends_id].each do |user_id|
-         @post.user.build(content: params[:content], privacy: params[:privacy], user_id: user_id.to_i)
-       end
-     end
     if @post.save
       redirect_to profile_path(current_user), notice: 'Bravo, votre post a bien été publié.'
     else
       render :new, notice: 'Petit problème... réessayer svp.'
     end
-    # @comment = Comment.new(comment_params)
-    # @comment.user = current_user
-    # @comment.post = @post
-    # @comment.save
-    # if @post.save
-    #   redirect_to post_path(@post, anchor: "message_input")
-    # else
-    #   render :new
-    # end
   end
 
   def index
@@ -51,12 +34,30 @@ class PostsController < ApplicationController
   end
 
   def edit
+    redirect_to posts_path unless @post.user = current_user
   end
 
   def update
+    if @post.user == current_user
+        if @post.update(post_params)
+          redirect_to profile_path(current_user), notice: 'Bravo, votre post a bien été modifié.'
+        else
+          render 'edit'
+        end
+    else
+        redirect_to posts_path
+        flash[:notice] = "Vous ne pouvez pas modifié ce message"
+    end
   end
 
+
   def destroy
+   if @post.destroy
+      redirect_to profile_path(current_user), notice: "Votre statu a bien été supprimé."
+   else
+     redirect_to posts_path
+     flash[:notice] = "Vous ne pouvez pas modifié ce message"
+   end
   end
 
   private
@@ -66,7 +67,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-     @post = Post.find(params[:id])
+     @post = current_user.posts.find(params[:id])
   end
 
   def comment_params

@@ -1,12 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
@@ -21,11 +20,15 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    current_user.destroy
     redirect_to root_path,  notice: 'Votre profil a bien été supprimé'
   end
 
 private
+
+  def set_user
+    @user = current_user
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :birth_date, :picture, :address, :city, :country, :zipcode, :mood, medication_ids: [ ])

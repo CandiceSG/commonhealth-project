@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :user, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
+  validates :content, presence: true
+  validates_associated :comments
 
-  PRIVACY = [["Everyone","public" ], ["My friends", "friends"]]
+  PRIVACY = [["Public", "La communauté" ], ["Mes amis", "Amis"]]
 end
