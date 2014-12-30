@@ -152,6 +152,15 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   z-index: -1;
 }
 
+.navbarco {
+  width: 50%;
+  padding: 0px 0px 0px 0px;
+  background-size: 768px 17px;
+  position: absolute;
+  margin-top: 0px;
+  margin-left: -25px;
+}
+
 @media screen and (max-width: 768px) {
   #logo {
     height: 50px;

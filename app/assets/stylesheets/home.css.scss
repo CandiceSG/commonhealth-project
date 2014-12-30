@@ -13,7 +13,7 @@
 }
 
 .banner {
-  background-image: image-url("navbarco.png");
+  background-image: image-url("");
   background-color: #f5f5f5;
   background-size: contain;
   // background-position: center, bottom;
@@ -43,10 +43,4 @@
   letter-spacing: 0,9em;
 }
 
-.photo-nav {
-  width: 100%;
-  padding: 11px 0px 0px 0px;
-  background-size: 768px 17px;
-  position: absolute;
-  margin-top: 0px;
-}
+
