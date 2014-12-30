@@ -13,17 +13,17 @@
 }
 
 .banner {
-  background-image: image-url("banner.png");
+  background-image: image-url("navbarco.png");
   background-color: #f5f5f5;
   background-size: contain;
-  background-position: center, bottom;
+  // background-position: center, bottom;
   background-repeat: no-repeat;
   height: 700px;
-  padding-top: 120px, 30px;
+  margin-left: 0px;
   margin-top: 0px;
   text-align: center;
   width: 100%;
-  position: relative;
+  position: absolute;
   font-family: 'arial';
   color: #666;
   letter-spacing: 2px;
@@ -36,4 +36,17 @@
   font-weight: 400;
 }
 
+.HOME {
+  margin-right: 0px;
+  position: relative;
+  font-style: bold;
+  letter-spacing: 0,9em;
+}
 
+.photo-nav {
+  width: 100%;
+  padding: 11px 0px 0px 0px;
+  background-size: 768px 17px;
+  position: absolute;
+  margin-top: 0px;
+}
