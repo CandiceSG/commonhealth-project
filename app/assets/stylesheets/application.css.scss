@@ -1,12 +1,15 @@
 // Import gems SCSS
+@import url("style/robotothin\/stylesheet.css");
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-// your SCSS files
+// Import my SCSS
 @import "navbar";
 @import "home";
+@import "common";
+
 
 @font-face {
     font-family: 'robotothin';
