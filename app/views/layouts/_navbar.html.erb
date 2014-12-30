@@ -1,21 +1,19 @@
- <nav class="navbar navbar-default navbar-fixed-top navbar-wagon" role="navigation">
-    <div class="container-fluid">
-        <div class="photo-nav"><%= image_tag "home/navbarco.png", :class => "navbarco" %>
-
+<nav class="navbar navbar-default navbar-fixed-top navbar-wagon" role="navigation">
+  <div class="container-fluid">
+     <div class="photo-nav"><%= image_tag "home/navbarco.png", :class => "navbarco" %></div>
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    <%=link_to root_path, class: "navbar-brand" %>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+         </div>
 
-    </div>
 <!-- Brand and toggle get grouped for better mobile display -->
 
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
               <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
@@ -27,17 +25,16 @@
                 <% end %>
 
                   <li><a href="#"><i class="fa fa-envelope-o"></i> Contact</a></li>
-               <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="http://placehold.it/30x30" id="profile-pic" alt="">Follow-us <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fa fa-twitter-square"></i> Twitter</a></li>
-                  </ul>
-               </li>
+                 <li class="dropdown">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="http://placehold.it/30x30" id="profile-pic" alt="">Follow-us <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+                      <li><a href="#"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+                    </ul>
+                 </li>
               </ul>
              <div class="HOME"><%=link_to "HOME", root_path, class: "navbar-brand" %></div>
           <!-- /.navbar-collapse -->
           </div>
       </div><!-- /.container-fluid -->
-  </div>
   </nav>

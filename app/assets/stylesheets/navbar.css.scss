@@ -76,8 +76,10 @@ $profile-border-width: 2px;
  {
   display: block;
   color: $color;
-  padding-top: 15px;
+  padding-top: 0px;
+  padding-left: 40px;
   padding-bottom: $vertical-padding;
+  position: absolute;
 }
 
 $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-border-width - $btn-bottom-border-width) / 2;
@@ -153,6 +155,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 }
 
 .navbarco {
+  position: relative;
   width: 50%;
   padding: 0px 0px 0px 0px;
   background-size: 768px 17px;
