@@ -10,8 +10,10 @@
 }
 
 .img-background{
-  background-image: image-url('background-co.png');
-
+  background-image: image-url('home/background-co.png');
+  height: 800px;
+  background-size: cover;
+  text-align: center;
 }
 
 

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 ruby '2.1.2'
 
 gem 'rails_12factor', group: :production
@@ -40,6 +41,9 @@ gem 'figaro'
 gem 'font-awesome-sass', '~> 4.2.0'
 
 gem 'devise'
+
+gem "rails-assets-underscore"
+
 
 
 

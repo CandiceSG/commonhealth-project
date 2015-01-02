@@ -25,6 +25,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.1.8)
       actionpack (= 4.1.8)
@@ -168,6 +169,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.8)
       sprockets-rails (~> 2.0)
+    rails-assets-underscore (1.7.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -255,6 +257,7 @@ DEPENDENCIES
   pry-byebug
   quiet_assets
   rails (= 4.1.8)
+  rails-assets-underscore
   rails_12factor
   rails_admin
   sass-rails (~> 4.0.3)
