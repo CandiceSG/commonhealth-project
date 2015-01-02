@@ -35,7 +35,7 @@
   position: absolute;
   padding-left: 100px;
   padding-top: 10px;
-  color: white;
+  color: #DDDDDD;
   opacity: 1;
  }
 
@@ -62,7 +62,6 @@
   padding-bottom: $vertical-padding;
 }
 .container {
-  background-color: #444444;
   margin-left: 0;
   color: #CCCCCC;
 }
@@ -70,6 +69,8 @@
 .feature {
   font-weight: 300;
   letter-spacing: 1px;
+  color: #666;
+
 }
 
 *{
@@ -94,14 +95,11 @@
 }
 
 .span, .span_large{
-    float: left;
+    float: center;
     width: 100px;
-    background-color: rgba(0,0,0, 0.02);
-    height: 100px;
     vertical-align: middle;
-    border-radius: 1px;
+    border-radius: 4px;
     margin-right: 100px;
-    margin-bottom: 2em;
 }
 .span:last-child{
     margin-right: 0px;
@@ -110,10 +108,12 @@
 /*Location indicator */
 .location_indicator{
     margin: 30px auto;
+    position: relative;
     left: -9px;
 }
 
-.location_indicator:before, .location_indicator:after{
+.location_indicator:before,
+.location_indicator:after{
     position: absolute;
     content: "";
 }
@@ -122,7 +122,7 @@
     width: 20px;
     height: 20px;
     border-radius: 100% 100% 100% 0;
-    box-shadow: 0px 0px 0px 2px rgba(255,255,255,1);
+    box-shadow: 0px 0px 0px 2px rgba(0,0,0, 0.3);
     -webkit-animation: mapping 1s linear infinite;
        -moz-animation: mapping 1s linear infinite;
             animation: mapping 1s linear infinite;
@@ -137,7 +137,7 @@
     height: 10px;
     border-radius: 100%;
     left: 44px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #AAAAAA;
     top: 24px;
     z-index: -1;
 }
@@ -158,6 +158,9 @@
     100% {top:0; }
 }
 
+.p {
+  color: black;
+}
 
 #footer{
   background-color: black;
