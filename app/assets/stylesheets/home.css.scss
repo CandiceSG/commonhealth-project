@@ -66,11 +66,10 @@
   color: #CCCCCC;
 }
 
-.feature {
+.icono {
   font-weight: 300;
   letter-spacing: 1px;
   color: #666;
-
 }
 
 *{
@@ -91,7 +90,7 @@
 
 .row{
     text-align: center;
-    padding: 50px 0;
+    padding: 20px 0;
 }
 
 .span, .span_large{
@@ -106,14 +105,18 @@
 }
 
 /*Location indicator */
+
+#block{
+  margin: 34px;
+  margin-left: 120px;
+}
+
 .location_indicator{
-    margin: 30px auto;
     position: relative;
     left: -9px;
 }
 
-.location_indicator:before,
-.location_indicator:after{
+.location_indicator:before, .location_indicator:after{
     position: absolute;
     content: "";
 }
@@ -122,7 +125,7 @@
     width: 20px;
     height: 20px;
     border-radius: 100% 100% 100% 0;
-    box-shadow: 0px 0px 0px 2px rgba(0,0,0, 0.3);
+    box-shadow: 0px 0px 0px 2px rgba(0,0,0, 0.55);
     -webkit-animation: mapping 1s linear infinite;
        -moz-animation: mapping 1s linear infinite;
             animation: mapping 1s linear infinite;
@@ -137,7 +140,7 @@
     height: 10px;
     border-radius: 100%;
     left: 44px;
-    background-color: #AAAAAA;
+    background-color: rgba(0,0,0, 0.55);
     top: 24px;
     z-index: -1;
 }
@@ -158,8 +161,57 @@
     100% {top:0; }
 }
 
-.p {
-  color: black;
+
+.magnifier{
+    width: 20px;
+    height: 20px;
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0, 0.7);
+    border-radius: 50%;
+    position: relative;
+    margin: 34px 160px -10px;
+    -webkit-animation: magnify 1s linear infinite alternate;
+       -moz-animation: magnify 1s linear infinite alternate;
+            animation: magnify 1s linear infinite alternate;
+}
+.magnifier:after, .magnifier:before{
+    position: absolute;
+    content: "";
+}
+.magnifier:before{
+    content: "me";
+    font-size: 12px;
+    left: 2px;
+    text-align: center;
+    top: 2px;
+}
+.magnifier:after{
+    width: 2px;
+    height: 8px;
+    background-color: rgba(0,0,0, 0.7);
+    bottom: -6px;
+    left: 20px;
+    border-radius: 2px;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+
+@-webkit-keyframes magnify{
+    0%{-webkit-transform: scale(1); }
+    100%{-webkit-transform: scale(1.5);}
+}
+@-moz-keyframes magnify{
+    0%{-moz-transform: scale(1); }
+    100%{-moz-transform: scale(1.5);}
+}
+@keyframes magnify{
+    0%{transform: scale(1); }
+    100%{transform: scale(1.5);}
+}
+
+.feature{
+  padding-top: 5px;
+  color: #666;
 }
 
 #footer{
