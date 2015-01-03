@@ -32,22 +32,23 @@
 
  #wrapper h1{
   font-size: 60px;
-  text-shadow: 0 0 20px rgba(255,255,255, 0.3);
+  text-shadow: 0 0 20px rgba(0,0,0, 0.9);
   font-weight: 400;
   position: absolute;
   margin-left: 70px;
-  margin-top: -130px;
+  margin-top: -135px;
   color: #DDDDDD;
   opacity: 1;
   letter-spacing: 3px;
  }
 
  #wrapper h2{
+  text-shadow: 0 0 20px rgba(0,0,0, 0.6);
   padding: 0.2em;
   font-size: 25px;
   font-weight: 400;
   margin-left: 70px;
-  margin-top: -55px;
+  margin-top: -60px;
   letter-spacing: 2px;
   position: absolute;
   color: white;
